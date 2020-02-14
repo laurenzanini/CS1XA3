@@ -1,4 +1,4 @@
-# CS 1XA3: PROJECT 01
+# CS 1XA3: PROJECT 01 
 ### *Lauren Zanini (Mac-ID: zaninil)*
 This file will describe usage of the script, the features it contains, and any reference pages used to construct the code.
 

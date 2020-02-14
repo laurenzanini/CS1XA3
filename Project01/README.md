@@ -77,5 +77,4 @@ Some resources I used when writing this portion of the code include...
 **Description:**
 - This feature will find all files that have the same name but different extensions.
 - Create a file CS1XA3/Project01/samename.log if it doesn't exist, overwrite it if it does.
-- This feature will append the names of the files to **"samename.log"**.
-- This feature will output the number of files in the repository with the same name but different extensions.
+- This feature will append the number of files with the same name but different extensions, and last line of each file to **"samename.log"** 

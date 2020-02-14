@@ -11,7 +11,7 @@ The very first part checks if the user input is equal to zero or greater than on
 
 The code can be run with 3 possible inputs / arguments and each are meant to be run separately.
 The inputs are **"fix"**, **"merge"**, and **"file-count"**.
- This can be done in the CS1XA3 directory, where the git repository was cloned, as so:
+This can be done in the CS1XA3 directory, where the git repository was cloned, as so:
 
 	chmod +x CS1XA3/Project01/project_analyze.sh
 	./CS1XA3/Project01/project_analyze.sh fix
@@ -48,7 +48,7 @@ Some webpages I used for reference when writing my code include...
 - This feature can be executed by using the input **"merge"**, and running the respective code shown in the **"USAGE OF THE SCRRIPT"** section above.
 
 **References:** 
-Some references I used when writing this porrtion of the code include...
+Some references I used when writing this portion of the code include...
 - [W3docs-GitLog](https://www.w3docs.com/learn-git/git-log.html)
 - [mac1xa3.ca_lab05_slide3-1](https://mac1xa3.ca/Slides/Week05/1XA3_Lab_Week05.html)
 
@@ -77,4 +77,4 @@ Some resources I used when writing this portion of the code include...
 **Description:**
 - This feature will find all files that have the same name but different extensions.
 - Create a file CS1XA3/Project01/samename.log if it doesn't exist, overwrite it if it does.
-- This feature will append the number of files with the same name but different extensions, and last line of each file to **"samename.log"** 
+- This feature will append the number of files with the same name but different extensions, and last line of each file to **"samename.log"**. 

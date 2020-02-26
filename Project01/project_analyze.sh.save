@@ -32,13 +32,10 @@ elif [ "$1" = "file-count" ] ; then
 
 elif [ "$1" = "execute" ] ; then
 	:> permissions.log
-	read -p "Would you like to Change or Restore? " prompt
-	if [ $prompt  = "Change" ] ; then
-		find .. -type f -name "*.sh" -print0 | while IFS= read -d '' file; do
-			echo "$file"
-			ls -l "$file" | cut -d ' ' -f 1 | echo
-		done
-	fi
+	find .. -type f "*.sh" | while IFS= read -d '' file
+	do
+		read -p "Would you like to Change or Restore: " change restore
+		if 
 # prints invalid input when something is inputted that is not defined
 else
         echo "invalid input"

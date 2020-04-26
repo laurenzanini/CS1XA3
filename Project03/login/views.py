@@ -3,7 +3,6 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib import messages
-
 from social import models
 
 def login_view(request):
@@ -23,6 +22,8 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request,user)
+            request.session['numnotfriends'] = 1
+            request.session['numofposts'] = 1
             request.session['failed'] = False
             return redirect('social:messages_view')
         else:
@@ -45,9 +46,11 @@ def logout_view(request):
       out: (HttpResponse) - perform User logout and redirects to login_view
     """
     # TODO Objective 4 and 9: reset sessions variables
-
     # logout user
+    request.session['numnotfriends'] = 1
+    request.session['numofposts'] = 1
     logout(request)
+
 
     return redirect('login:login_view')
 
@@ -60,10 +63,26 @@ def signup_view(request):
     -------
       out : (HttpRepsonse) - renders signup.djhtml
     """
-    form = None
-
+    form = UserCreationForm()
     # TODO Objective 1: implement signup view
-
-    context = { 'signup_form' : form }
-
+    failed = request.session.get('create_failed',False)
+    context = { 'create_form' : form
+                ,'create_failed' : failed }
+   
     return render(request,'signup.djhtml',context)
+
+def create_view(request):
+  if request.method == 'POST':
+      form = UserCreationForm(request.POST)
+      if form.is_valid():
+          username = form.cleaned_data.get('username')
+          raw_password = form.cleaned_data.get('password1')
+          user = models.UserInfo.objects.create_user_info(username=username,password=raw_password)
+          login_info = authenticate(request, username=username, password=raw_password)          
+          login(request, login_info)
+          request.session['numnotfriends'] = 1
+          request.session['numofposts'] = 1
+          return redirect('social:messages_view')
+
+  request.session['create_failed'] = True
+  return redirect('login:login_view')

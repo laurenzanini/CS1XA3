@@ -9,7 +9,18 @@
                 <div class="w3-container w3-padding">
                     <h6 class="w3-opacity">Change Password</h6>
                     <!--                     TODO Objective 3: Add Password Change Form -->
-                </div>
+                
+        <form method="post" id="change_form" action="{% url 'social:account_view' %}">
+             {% csrf_token %}
+             {{ change_form }}
+             <input type="submit" value="Submit" />
+        </form>
+        {% if change_failed %}
+             <p style="color:red"> Invalid username or password </p>
+        {% endif %}
+
+
+</div>
             </div>
         </div>
     </div>
@@ -19,6 +30,25 @@
                 <div class="w3-container w3-padding">
                     <h6 class="w3-opacity">Update Info</h6>
                     <!--                     TODO Objective 3: Add User Info Update Forms -->
+                
+                <form method="post" action="{% url 'social:account_view' %}">
+                    {% csrf_token %}
+                    <label for="employment">Employment:</label><br>
+                    <input type="text" name="employment"><br><br>
+                    <label for="location">Location:</label><br>
+                    <input type="text" name="location"><br><br>
+                    <label for="birthday">Birthday:</label><br>
+                    <input type="date" name="birthday"><br><br>
+                    <label for="interests">Interests:</label><br>
+                    <input type="text" name="newInterest"><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+                {% if change_failed %}
+                     <p style="color:red"> Invalid username or password </p>
+                {% endif %}
+
+
+
                 </div>
             </div>
         </div>
